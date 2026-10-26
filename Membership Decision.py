@@ -1,0 +1,9 @@
+predifined_username = {"Piyush":"Piyush@7890", "Ankush":"Ankush@1234", "Admin":"Admin@@@", "USER123":"USER#1234", "USER789":"USES23423"}
+username = str(input("Enter username: "))
+password = input("Enter password: ")
+
+key_list = list(predifined_username.keys())
+if(username in key_list):
+    print(f"{username} Exits!")
+else:
+    print(f"{username} do not exits!")
