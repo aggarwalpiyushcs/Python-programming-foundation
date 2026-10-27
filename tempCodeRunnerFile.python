@@ -1,52 +1,63 @@
-#Robust Personal Finacne Calculator
+#Digital Intelligence System
 
-print("\n==========Robus Finance Calculator==========\n")
-print("Give all inputs in Indian Currency i.e, Rupees\n")
-try: 
-    income = float(input("Enter monthly income in rupees: "))
-    rent = float(input("Enter rent: "))
-    food = float(input("Enter food expenses: "))
-    transportation = float(input("Enter transportation expenses: "))
-    other = float(input("Enter other expenses: "))
-    saving_target_percentage = float(input("Enter saving target percentage: "))
+try:
+    n = int(input("Enter Integer: "))
 except ValueError:
-    print("Invalid values! Please enter the inputs correctly!")
+    print("Invalid Input! Enter Integer!")
     exit()
 
-total_expenses = rent + food + transportation + other
-remaining_amount = income - total_expenses
+temp = n
+temp1 = n
 
-if(income <= 0 ):
-    print("\nIncome cannot be Zero or Negative!")
-    exit()
+temp1 = abs(temp1)
+temp = abs(temp)
+count = 0
+digits = []
+product = 1
+sum = 0
+sum_even = sum_odd = 0
+reverse = 0
+armstrong_sum = 0
 
-if(remaining_amount < 0):
-    print("\nTotal expneses is greater than the income! You should manage your fund efficiently.")
-    exit()
 
-if(saving_target_percentage >=100):
-    print("\nSaving target percentage cannot be one hundred or freater than it.")
-    exit()
+while(temp > 0):
+    digit = temp % 10
+    sum = sum + digit
+    count = count + 1
+    reverse = (reverse*10)+digit
+    if(digit % 2 == 0):
+        sum_even = sum_even + digit
+    else:
+        sum_odd = sum_odd + digit
 
-required_saving = ((saving_target_percentage * income)/100)
-if(required_saving < remaining_amount):
-    print("Congratualtions! Saving Target achieved!")
+    digits.append(digit)
+
+    largest_digit = max(digits)
+    smallest_digit = min(digits)
+
+    if(digit != 0):
+        product = product * digit
+    temp = temp // 10
+
+while(temp1 > 0):
+    digit = temp1 % 10
+    armstrong_sum = armstrong_sum + (digit ** count)
+    temp1 = temp1//10
+
+print(f"\nTotal number of digits: {count}")
+print(f"Sum of Digits: {sum}")
+print(f"Products of non zero: {product}")
+print(f"Largest Digit: {largest_digit}")
+print(f"Smallest Digit: {smallest_digit}")
+print(f"Number of Even digits: {sum_even}")
+print(f"Number of Odd Events: {sum_odd}")
+
+if(reverse == n):
+    print(f"{n} is palindrome number.")
 else:
-    print("Work hard! Saving Target not acheived")
+    print(f"{n} is not palindrome number.")
 
-percentage_income_spent = ((total_expenses/income)*100)
-
-print("\n\n\n")
-print("\n==========Robus Finance Calculator==========\n")
-print(f"\nMonthly Income:\t{income}")
-print(f"\nHouse rent:\t{rent}")
-print(f"\nFood Expenses:\t{food}")
-print(f"\nTransportation expenses:\t{transportation}")
-print(f"\nOther Expenses:\t{other}")
-print(f"\nSaving Target %:\t{saving_target_percentage}")
-print(f"\nTotal Expenses:\t{total_expenses}")
-print(f"\nRemaining amount:\t{remaining_amount}")
-
-
-
-
+if(armstrong_sum == n):
+    print(f"{n} is armstrong number.")
+else:
+    print(f"{n} is not armstrong number.")
